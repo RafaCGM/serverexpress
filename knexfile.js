@@ -11,7 +11,7 @@ module.exports = {
       port: '3306',
       database: 'autocoolerdb',
       user:     'root',
-      password: 'kakinho123'
+      password: '12345'
     },
     pool: {
       min: 2,
