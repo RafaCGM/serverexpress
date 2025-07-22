@@ -5,7 +5,6 @@ module.exports = app => {
 
         app.db('usuarios')
             .insert({
-                idusuario: req.body.idusuario,
                 matricula: req.body.matricula,
                 nome: req.body.nome,
                 email: req.body.email,
@@ -23,8 +22,12 @@ module.exports = app => {
                     "msg": "Algo de errado aconteceu.",
                     "msg_erro": err,
                     "num_erro": 1
-                }
+                }   
             ))
+
+            // .catch((error) => {
+            //     console.log(error)
+            // })
     }
 
     const listUsuarios = (req, res) => {
@@ -90,7 +93,7 @@ module.exports = app => {
     const updateUsuario = (req, res) => {
         const ACAO = "Atualização"
         console.log('update')
-
+        
         app.db('usuarios')
             .where({idusuario: req.body.idusuario})
             .update({
@@ -105,14 +108,17 @@ module.exports = app => {
                     "msg_erro": "",
                     "num_erro": 0
                 })
-            )
-            .catch(err => res.status(400).json(
+            ).catch(err => res.status(400).json(
                 {
                     "msg": "",
                     "msg_erro": err,
                     "num_erro": 1
                 }
             ))
+
+            // .catch((error) => {
+            //     console.log(error)
+            // })
     }
 
     const remUsuario = (req, res) => {
