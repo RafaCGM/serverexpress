@@ -9,9 +9,9 @@ module.exports = {
     connection: {
       host: '127.0.0.1',
       port: '3306',
-      database: 'autocoolerdb',
+      database: 'arcondicionadodb',
       user:     'root',
-      password: '12345'
+      password: 'kakinho123'
     },
     pool: {
       min: 2,
