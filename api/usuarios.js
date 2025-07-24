@@ -1,7 +1,7 @@
 module.exports = app => {
     const signup = (req, res) => {
         const ACAO = "Cadastro"
-        console.log('signup')
+        console.log('SignUp')
 
         app.db('usuarios')
             .insert({
@@ -33,7 +33,7 @@ module.exports = app => {
     const listUsuarios = (req, res) => {
         const ACAO = "Listagem"
 
-        console.log('listUsuarios')
+        console.log('Listagem de Usuários')
         var query = app.db('usuarios')
             .orderBy('nome')
             .then(users =>
@@ -57,7 +57,7 @@ module.exports = app => {
     const getUsuario = (req, res) => {
         const ACAO = "Acesso"
 
-        console.log('getUsuario')
+        console.log('Acesso de Usuário')
         app.db('usuarios')
             .where({ idusuario: req.body.idusuario })
             .then((user) => {
@@ -92,7 +92,7 @@ module.exports = app => {
 
     const updateUsuario = (req, res) => {
         const ACAO = "Atualização"
-        console.log('update')
+        console.log('Atualização de Usuário')
         
         app.db('usuarios')
             .where({idusuario: req.body.idusuario})
@@ -124,7 +124,7 @@ module.exports = app => {
     const remUsuario = (req, res) => {
         const ACAO = "Remover"
 
-        console.log('remUsuario')
+        console.log('Remoção de Usuário')
         app.db('usuarios')
             .where({ idusuario: req.body.idusuario })
             .del()
