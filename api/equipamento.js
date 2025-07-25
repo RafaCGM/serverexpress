@@ -5,8 +5,7 @@ module.exports = app => {
 
         app.db('equipamento')
             .insert({
-                // status: req.body.status,
-                espaco_idespaco: req.body.espaco_idespaco,
+                espaco_num_espaco: req.body.espaco_num_espaco,
             })
             .then(_ => res.status(200).json(
                 {
@@ -15,13 +14,17 @@ module.exports = app => {
                     "num_erro": 0
                 })
             )
-            .catch(err => res.status(400).json(
-                {
-                    "msg": "Algo de errado aconteceu.",
-                    "msg_erro": err,
-                    "num_erro": 1
-                }   
-            ))
+            .catch((error) => {
+                console.log(error)
+            })
+            // .catch(err => res.status(400).json(
+            //     {
+            //         "msg": "Algo de errado aconteceu.",
+            //         "msg_erro": err,
+            //         "num_erro": 1
+            //     }   
+            // ))
+
     }
 
     const listEquipamento = (req, res) => {

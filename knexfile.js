@@ -11,7 +11,7 @@ module.exports = {
       port: '3306',
       database: 'arcondicionadodb',
       user:     'root',
-      password: '12345'
+      password: 'kakinho123'
     },
     pool: {
       min: 2,
