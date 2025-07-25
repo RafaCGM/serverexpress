@@ -16,7 +16,11 @@ module.exports = app => {
 
     // Equipamento
 
-
+    app.post('/equipamento/create', app.api.equipamento.createEquipamento)
+    app.post('/equipamento/list', app.api.equipamento.listEquipamento)
+    app.post('/equipamento/get', app.api.equipamento.getEquipamento)
+    app.post('/equipamento/update', app.api.equipamento.updateEquipamento)
+    app.post('/equipamento/rem', app.api.equipamento.remEquipamento)
 
     // Monitoramento
 
