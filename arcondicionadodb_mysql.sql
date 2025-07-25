@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `arcondicionadodb` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `arcondicionadodb`;
 -- MySQL dump 10.13  Distrib 8.0.42, for Win64 (x86_64)
 --
 -- Host: localhost    Database: arcondicionadodb
@@ -27,11 +25,11 @@ DROP TABLE IF EXISTS `equipamento`;
 CREATE TABLE `equipamento` (
   `id_equipamento` int unsigned NOT NULL AUTO_INCREMENT,
   `status` tinyint(1) NOT NULL DEFAULT '0',
-  `espaco_idespaco` int unsigned DEFAULT NULL,
+  `espaco_num_espaco` int unsigned DEFAULT NULL,
   PRIMARY KEY (`id_equipamento`),
-  KEY `equipamento_espaco_idespaco_foreign` (`espaco_idespaco`),
-  CONSTRAINT `equipamento_espaco_idespaco_foreign` FOREIGN KEY (`espaco_idespaco`) REFERENCES `espaco` (`id_espaco`) ON DELETE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  KEY `equipamento_espaco_num_espaco_foreign` (`espaco_num_espaco`),
+  CONSTRAINT `equipamento_espaco_num_espaco_foreign` FOREIGN KEY (`espaco_num_espaco`) REFERENCES `espaco` (`num_espaco`) ON DELETE SET NULL
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -52,12 +50,13 @@ DROP TABLE IF EXISTS `espaco`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `espaco` (
   `id_espaco` int unsigned NOT NULL AUTO_INCREMENT,
-  `num_espaco` int NOT NULL,
+  `num_espaco` int unsigned NOT NULL,
   `usuarios_idusuario` int unsigned DEFAULT NULL,
   PRIMARY KEY (`id_espaco`),
+  UNIQUE KEY `espaco_num_espaco_unique` (`num_espaco`),
   KEY `espaco_usuarios_idusuario_foreign` (`usuarios_idusuario`),
   CONSTRAINT `espaco_usuarios_idusuario_foreign` FOREIGN KEY (`usuarios_idusuario`) REFERENCES `usuarios` (`idusuario`) ON DELETE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -66,6 +65,7 @@ CREATE TABLE `espaco` (
 
 LOCK TABLES `espaco` WRITE;
 /*!40000 ALTER TABLE `espaco` DISABLE KEYS */;
+INSERT INTO `espaco` VALUES (5,84,1);
 /*!40000 ALTER TABLE `espaco` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -82,7 +82,7 @@ CREATE TABLE `knex_migrations` (
   `batch` int DEFAULT NULL,
   `migration_time` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -91,7 +91,7 @@ CREATE TABLE `knex_migrations` (
 
 LOCK TABLES `knex_migrations` WRITE;
 /*!40000 ALTER TABLE `knex_migrations` DISABLE KEYS */;
-INSERT INTO `knex_migrations` VALUES (3,'20250723235404_create_usuarios.js',1,'2025-07-24 00:05:20'),(4,'20250724000017_create_espaco.js',1,'2025-07-24 00:05:20'),(6,'20250724001731_create_equipamento.js',2,'2025-07-24 00:28:15'),(7,'20250724003115_create_monitoramento.js',3,'2025-07-24 00:36:17');
+INSERT INTO `knex_migrations` VALUES (3,'20250723235404_create_usuarios.js',1,'2025-07-24 00:05:20'),(4,'20250724000017_create_espaco.js',1,'2025-07-24 00:05:20'),(6,'20250724001731_create_equipamento.js',2,'2025-07-24 00:28:15'),(7,'20250724003115_create_monitoramento.js',3,'2025-07-24 00:36:17'),(8,'20250725185148_alterar_chave_espaco.js',4,'2025-07-25 18:53:49'),(9,'20250725190211_alterar_chave_equipamento.js',5,'2025-07-25 19:20:27'),(10,'20250725192323_adicionar_unique_num_espaco.js',6,'2025-07-25 19:24:16'),(11,'20250725192515_remover_espaco_num_espaco_de_equipamento.js',7,'2025-07-25 19:28:47'),(12,'20250725193124_add_espaco_num_espaco_to_equipamento.js',8,'2025-07-25 19:38:27'),(13,'20250725194056_add_chaveespaco_equipamento.js',9,'2025-07-25 19:45:01'),(14,'20250725195056_remover_chave_equipamento.js',10,'2025-07-25 19:51:35'),(16,'20250725195301_add_espaco_num_espaco_to_equipamento.js',11,'2025-07-25 20:11:56');
 /*!40000 ALTER TABLE `knex_migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -162,7 +162,7 @@ CREATE TABLE `usuarios` (
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`idusuario`),
   UNIQUE KEY `usuarios_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -184,4 +184,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-07-23 21:52:35
+-- Dump completed on 2025-07-25 17:34:34
