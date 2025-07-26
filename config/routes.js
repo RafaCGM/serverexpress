@@ -15,7 +15,6 @@ module.exports = app => {
     app.post('/espaco/rem', app.api.espaco.remEspaco)
 
     // Equipamento
-
     app.post('/equipamento/create', app.api.equipamento.createEquipamento)
     app.post('/equipamento/list', app.api.equipamento.listEquipamento)
     app.post('/equipamento/get', app.api.equipamento.getEquipamento)
@@ -23,6 +22,10 @@ module.exports = app => {
     app.post('/equipamento/rem', app.api.equipamento.remEquipamento)
 
     // Monitoramento
-
+    app.post('/monitoramento/create', app.api.monitoramento.createMonitoramento)
+    app.post('/monitoramento/list', app.api.monitoramento.listMonitoramento)
+    app.post('/monitoramento/get', app.api.monitoramento.getMonitoramento)
+    app.post('/monitoramento/update', app.api.monitoramento.updateMonitoramento)
+    app.post('/monitoramento/rem', app.api.monitoramento.remMonitoramento)
 
 }
